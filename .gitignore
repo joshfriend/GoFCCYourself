@@ -1,0 +1,42 @@
+# Mac OS
+.DS_Store
+
+# IDE
+*.iml
+/local.properties
+
+# Gradle
+.gradle
+
+# Build
+build/
+/captures
+.externalNativeBuild
+.android/
+
+# Gem/Bundler
+vendor/
+.bundle
+
+# Fastlane
+fastlane/report.xml
+fastlane/README.md
+
+# Fabric
+fabric.properties
+
+# .idea stuff
+.idea/gradle.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/libraries.xml
+.idea/modules.xml
+.idea/misc.xml
+.idea/assetWizardSettings.xml
+.idea/kotlinc.xml
+.idea/caches/
+.idea/libraries/
+.idea/dictionaries/
+
+# crashlytics garbage
+true/

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".ui.MainActivity"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    >
+
+    <TextView
+        android:id="@+id/statusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Active!"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        />
+
+    <Button
+        android:id="@+id/activateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tap_to_activate"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Inverse"
+        />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/enableSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_enable_service"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/skipNotificationSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_skip_notification"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/skipCallLogSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pref_skip_call_log"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        />
+
+</LinearLayout>

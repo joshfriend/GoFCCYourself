@@ -1,0 +1,37 @@
+<lint>
+    <issue id="ObsoleteSdkInt" severity="error"/>
+    <issue id="PrivateResource" severity="error"/>
+    <issue id="UnusedIds" severity="ignore"/>  <!-- does not catch uses of view IDs by Kotlin android extensions -->
+    <issue id="UnusedResources" severity="ignore" />
+    <issue id="GradleDynamicVersion" severity="error" />
+    <issue id="CheckResult" severity="error" />
+    <issue id="SimpleDateFormat" severity="error" />
+    <issue id="RtlEnabled" severity="error" />
+    <issue id="Registered" severity="error" />
+    <issue id="InnerclassSeparator" severity="error" />
+    <issue id="CommitPrefEdits" severity="error" />
+    <issue id="HardcodedText" severity="error" />
+    <issue id="UnusedAttribute" severity="error" />
+    <issue id="IconLocation" severity="error" />
+    <issue id="MergeRootFrame" severity="error"/>
+    <issue id="UseCompoundDrawables" severity="error"/>
+
+    <issue id="SyntheticAccessor" severity="error" /> <!-- Change back to error when https://issuetracker.google.com/issues/110243369 is fixed -->
+    <!--<issue id="SyntheticAccessor" severity="informational">-->
+        <!--<ignore path="src/test*/**"/>-->
+        <!--<ignore path="src/androidTest*/**"/>-->
+    <!--</issue>-->
+
+    <issue id="MissingTranslation" severity="ignore" />
+
+    <!-- No one cares. -->
+    <issue id="Overdraw" severity="ignore" />
+    <issue id="GoogleAppIndexingWarning" severity="ignore"/>
+    <issue id="Typos" severity="ignore" />
+    <issue id="VectorPath" severity="ignore" />
+
+    <issue id="Autofill" severity="error" />
+    <issue id="LabelFor" severity="error" />
+
+    <issue id="GradleDependency" severity="informational" />
+</lint>
