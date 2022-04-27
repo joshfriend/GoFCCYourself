@@ -17,7 +17,10 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning"
         android:fullBackupOnly="true"
         >
-        <activity android:name=".ui.MainActivity">
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -25,8 +28,11 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".service.StupidCallScreeningService"
-                 android:permission="android.permission.BIND_SCREENING_SERVICE">
+        <service
+            android:name=".service.StupidCallScreeningService"
+            android:permission="android.permission.BIND_SCREENING_SERVICE"
+            android:exported="false"
+            >
             <intent-filter>
                 <action android:name="android.telecom.CallScreeningService"/>
             </intent-filter>

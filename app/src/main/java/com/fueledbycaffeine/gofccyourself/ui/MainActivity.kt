@@ -6,8 +6,10 @@ import android.app.role.RoleManager.ROLE_CALL_SCREENING
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -109,6 +111,7 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
 
   private fun requestRole() {
     val intent = roleManager.createRequestRoleIntent(ROLE_CALL_SCREENING)
+    @Suppress("DEPRECATION")
     startActivityForResult(intent,
       REQUEST_ID_BECOME_CALL_SCREENER
     )
@@ -129,6 +132,18 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
       prefs.skipCallLog = skip
       updateUi()
     }
+    declineUnknownCallers.setOnCheckedChangeListener { _, skip ->
+      prefs.declineUnknownCallers = skip
+      updateUi()
+    }
+    declineAuthenticationFailures.setOnCheckedChangeListener { _, skip ->
+      prefs.declineAuthenticationFailures = skip
+      updateUi()
+    }
+    declineUnauthenticatedCallers.setOnCheckedChangeListener { _, skip ->
+      prefs.declineUnauthenticatedCallers = skip
+      updateUi()
+    }
   }
 
   private fun updateUi() {
@@ -141,13 +156,36 @@ class MainActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     enableSwitch.isVisible = isInstalled
     skipNotificationSwitch.isVisible = isInstalled
     skipCallLogSwitch.isVisible = isInstalled
+    declineUnknownCallers.isVisible = isInstalled
+    declineAuthenticationFailures.isVisible = isInstalled
+    declineUnauthenticatedCallers.isVisible = isInstalled
 
     enableSwitch.isChecked = prefs.isServiceEnabled
 
-    skipNotificationSwitch.isEnabled = prefs.isServiceEnabled
-    skipNotificationSwitch.isChecked = prefs.skipCallNotification
+    if (Build.VERSION.SDK_INT > 100) {
+      skipNotificationSwitch.isEnabled = prefs.isServiceEnabled
+      skipNotificationSwitch.isChecked = prefs.skipCallNotification
 
-    skipCallLogSwitch.isEnabled = prefs.isServiceEnabled
-    skipCallLogSwitch.isChecked = prefs.skipCallLog
+      skipCallLogSwitch.isEnabled = prefs.isServiceEnabled
+      skipCallLogSwitch.isChecked = prefs.skipCallLog
+    } else {
+      skipNotificationSwitch.isEnabled = false
+      skipNotificationSwitch.isChecked = true
+      skipNotificationDescription.visibility = View.VISIBLE
+
+      skipCallLogSwitch.isEnabled = false
+      skipCallLogSwitch.isChecked = true
+      skipCallLogDescription.visibility = View.VISIBLE
+    }
+
+
+    declineUnknownCallers.isEnabled = prefs.isServiceEnabled
+    declineUnknownCallers.isChecked = prefs.declineUnknownCallers
+
+    declineAuthenticationFailures.isEnabled = prefs.isServiceEnabled
+    declineAuthenticationFailures.isChecked = prefs.declineAuthenticationFailures
+
+    declineUnauthenticatedCallers.isEnabled = prefs.isServiceEnabled
+    declineUnauthenticatedCallers.isChecked = prefs.declineUnauthenticatedCallers
   }
 }

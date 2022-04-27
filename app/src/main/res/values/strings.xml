@@ -5,8 +5,16 @@
     <string name="tap_to_activate">Tap to Activate</string>
     <string name="enable_service">Enable screening</string>
     <string name="pref_skip_notification">Skip missed call notification</string>
+    <string name="pref_skip_notification_explanation">Due to a bug in your version of Android, this option cannot be disabled.</string>
     <string name="pref_enable_service">Enable screening</string>
     <string name="pref_skip_call_log">Skip call log</string>
+    <string name="pref_skip_call_log_description">Due to a bug in your version of Android, this option cannot be disabled.</string>
     <string name="enable_read_contacts_permissions_instructions">Please enable \"Contacts\" inside the \"Permissions\" section</string>
     <string name="enable_read_contacts_permissions_instructions_long">Please open settings for this app and enable \"Contacts\" inside the \"Permissions\" section</string>
+    <string name="pref_decline_unauthenticated_callers">Decline unverified callers</string>
+    <string name="pref_caller_auth_warning">When enabled, this option declines all calls that were not verified using carrier verification. If your carrier and the carrier of those calling you do not implement SHAKEN/STIR verification, this could block a lot of potentially valid callers!</string>
+    <string name="pref_decline_authentication_failures">Decline calls from faked sources</string>
+    <string name="pref_failed_auth_check_explanation">When enabled, this option declines callers which fail carrier verification. Callers that fail this check have a high likelihood of originating from a faked source.</string>
+    <string name="pref_decline_unknown_callers">Decline unknown callers</string>
+    <string name="pref_decline_unknown_callers_explanation">Decline calls from anyone not listed in your contacts</string>
 </resources>
