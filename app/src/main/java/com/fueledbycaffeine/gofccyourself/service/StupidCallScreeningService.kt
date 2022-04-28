@@ -7,6 +7,7 @@ import android.provider.ContactsContract
 import android.telecom.Call
 import android.telecom.CallScreeningService
 import android.telecom.Connection
+import android.telecom.TelecomManager
 import android.telephony.PhoneNumberUtils
 import com.fueledbycaffeine.gofccyourself.ScreeningPreferences
 import timber.log.Timber
@@ -40,7 +41,9 @@ class StupidCallScreeningService : CallScreeningService() {
       // Call.Details includes caller name info as of R preview 2, but this seems to always be null
       // because the screening service is called before the lookup completes
       // https://issuetracker.google.com/issues/151898484
-      val caller = getContactName(details.handle.schemeSpecificPart)
+      //
+      // Handle may be null if caller id is blocked.
+      val caller = details.handle?.let { getContactName(it.schemeSpecificPart) }
 
       val rejectDueToVerificationStatus = when (details.callerNumberVerificationStatus) {
         Connection.VERIFICATION_STATUS_FAILED -> prefs.declineAuthenticationFailures
@@ -94,9 +97,11 @@ class StupidCallScreeningService : CallScreeningService() {
 }
 
 private val Call.Details.formattedPhoneNumber: String get() {
-  val phoneNumber = handle.schemeSpecificPart
-  return PhoneNumberUtils.formatNumber(
-    phoneNumber,
-    Locale.getDefault().country
-  )
+  return when (val phoneNumber = handle?.schemeSpecificPart) {
+    null -> "BLOCKED"
+    else -> PhoneNumberUtils.formatNumber(
+      phoneNumber,
+      Locale.getDefault().country
+    )
+  }
 }
